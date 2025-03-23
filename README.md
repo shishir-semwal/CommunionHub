@@ -1,129 +1,129 @@
-# Communion
+# CommunionHub
 
-Communion is a web platform designed to connect people across different faiths and interests. The platform allows users to discover, browse, and create community events spanning religious, social, and charitable categories.
+![CommunionHub Logo](/src/assets/LogoFooter.png)
 
-## 🌟 Features
+## About The Project
 
-- **Event Discovery**: Browse upcoming events filtered by category (Religious, Social, Charity)
-- **Event Creation**: Add your own community events to share with others
-- **Responsive Design**: Built with a mobile-first approach using Tailwind CSS and DaisyUI
-- **Community Focus**: Created to bridge gaps between different communities and interests
+CommunionHub is a vibrant web platform designed to connect diverse faiths and communities through events and shared experiences. The platform enables users to discover, create, and participate in various community events across different categories including religious, social, and charity initiatives.
 
-## 🛠️ Tech Stack
+## Features
 
-- **React** (v18.3.1): Frontend library
-- **Vite**: Build tool and development server
-- **Tailwind CSS**: Utility-first CSS framework
-- **DaisyUI**: Component library for Tailwind CSS
-- **ESLint**: Code quality and style enforcement
+- **Event Discovery**: Browse upcoming events from different faith communities and interest groups
+- **Category Filtering**: Filter events by category (Religious, Social, Charity)
+- **Interactive UI**: Responsive design with interactive elements and animations
+- **Event Creation**: Create and share your own community events
+- **Mobile Responsive**: Optimized for both desktop and mobile viewing
 
-## 🚀 Getting Started
+## Built With
+
+- [React](https://reactjs.org/) - Frontend library
+- [Vite](https://vitejs.dev/) - Build tool and development server
+- [React Router](https://reactrouter.com/) - For navigation and routing
+- [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework
+- [DaisyUI](https://daisyui.com/) - Component library for Tailwind
+- [Framer Motion](https://www.framer.com/motion/) - Animation library
+
+## Getting Started
+
+Follow these instructions to set up the project locally.
 
 ### Prerequisites
 
-- Node.js (v16.0.0 or higher)
-- npm or yarn package manager
+- Node.js (v14 or newer)
+- npm or yarn
 
 ### Installation
 
 1. Clone the repository
-```bash
-git clone https://github.com/yourusername/communion.git
-cd communion
+   ```sh
+   git clone https://github.com/shishir-semwal/CommunionHub.git
+   ```
+
+2. Navigate to the project directory
+   ```sh
+   cd CommunionHub
+   ```
+
+3. Install dependencies
+   ```sh
+   npm install
+   # or
+   yarn
+   ```
+
+4. Start the development server
+   ```sh
+   npm run dev
+   # or
+   yarn dev
+   ```
+
+5. Open your browser and visit `http://localhost:5173`
+
+## Usage
+
+### Exploring Events
+- Navigate to the "Events" page to browse all community events
+- Use the filter buttons to sort events by category
+
+### Creating an Event
+1. Go to the Events page
+2. Click "Add Event" button
+3. Fill in the event details including name, location, category, date, and description
+4. Submit the form to add your event to the list
+
+## Project Structure
+
 ```
-
-2. Install dependencies
-```bash
-npm install
-# or
-yarn
-```
-
-3. Start the development server
-```bash
-npm run dev
-# or
-yarn dev
-```
-
-4. Open your browser and visit `http://localhost:5173`
-
-## 📁 Project Structure
-
-```
-communion/
-├── public/             # Static files
-│   └── EventsList.json # Event data
-├── src/                # Source files
-│   ├── assets/         # Images and other assets
-│   ├── components/     # Reusable components
-│   │   ├── Card.jsx       # Event card component
-│   │   ├── CreateEvent.jsx # Event creation form
-│   │   ├── EventHero.jsx  # Hero section for events page
-│   │   ├── Footer.jsx     # Footer component
-│   │   ├── Hero.jsx       # Hero section for homepage
-│   │   ├── Navbar.jsx     # Navigation component
-│   │   └── Religious.jsx  # Religious events component
-│   ├── App.jsx        # Main application component
+CommunionHub/
+├── public/
+├── src/
+│   ├── assets/        # Images and static assets
+│   ├── components/    # Reusable UI components
+│   │   ├── Card.jsx   # Event card component
+│   │   ├── CreateEvent.jsx
+│   │   ├── EventHero.jsx
+│   │   ├── Footer.jsx
+│   │   ├── Hero.jsx
+│   │   ├── Modal.jsx
+│   │   └── Navbar.jsx
+│   ├── routes/        # Route components
+│   │   └── App.jsx    # Main app component with routing
+│   ├── About.jsx      # About page
 │   ├── Event.jsx      # Events page
-│   ├── Homepage.jsx   # Home page
+│   ├── EventsList.json # Sample event data
+│   ├── Homepage.jsx   # Main landing page
 │   ├── index.css      # Global styles
 │   └── main.jsx       # Entry point
-├── .eslintrc.json     # ESLint configuration
+├── .gitignore
 ├── index.html         # HTML template
-├── package.json       # Project dependencies
+├── package.json
 ├── tailwind.config.js # Tailwind CSS configuration
 └── vite.config.js     # Vite configuration
 ```
 
-## 🧩 Components
+## Contributing
 
-- **Navbar**: Navigation bar with dropdown menu for events
-- **Hero**: Landing page hero section with images and call-to-action
-- **EventHero**: Event page hero with category filtering options
-- **Card**: Reusable component for displaying individual events
-- **CreateEvent**: Form component for adding new events
-- **Religious/Social/Charity**: Category-specific event listing components
-- **Footer**: Site-wide footer with navigation and social links
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-## 📝 Event Data Structure
-
-Events are stored in `EventsList.json` with the following structure:
-
-```json
-{
-  "id": 1,
-  "title": "Event Title",
-  "desc": "Event description",
-  "location": "Event location",
-  "category": "Religious/Social/Charity",
-  "date": "Event date",
-  "image": "URL to event image"
-}
-```
-
-## 🔧 Available Scripts
-
-- `npm run dev`: Start development server
-- `npm run build`: Build for production
-- `npm run lint`: Run ESLint
-- `npm run preview`: Preview production build locally
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-## 📄 License
+## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+Distributed under the MIT License. See `LICENSE` for more information.
 
-## 👏 Acknowledgements
+## Contact
 
-- [React](https://reactjs.org/)
-- [Vite](https://vitejs.dev/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [DaisyUI](https://daisyui.com/)
+Shishir Semwal - [GitHub](https://github.com/shishir-semwal)
+
+Project Link: [https://github.com/shishir-semwal/CommunionHub](https://github.com/shishir-semwal/CommunionHub)
+
+## Acknowledgements
+
+- [React Icons](https://react-icons.github.io/react-icons/)
+- [Unsplash](https://unsplash.com/) - Images
+- [Google Fonts](https://fonts.google.com/) - Poppins font
