@@ -1,0 +1,17 @@
+/**
+ * Global styles and Tailwind imports
+ * Contains base font and Tailwind configuration
+ */
+
+/* Import Poppins font for headings */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+
+/* Tailwind CSS imports */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base styles */
+body {
+  font-family: 'Poppins';
+}

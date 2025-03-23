@@ -1,27 +1,38 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import './index.css'
+import './styles/index.css'
 import App from './routes/App.jsx'
-import Event from './Event.jsx'
+import Event from './pages/Event.jsx'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import About from './About.jsx'
-import Homepage from './Homepage.jsx'
+import About from './pages/About.jsx'
+import Homepage from './pages/Homepage.jsx'
 
-const router=createBrowserRouter([
-{
-  path:'/',element:<App/>,children:[
-    {path:'/',element:<Homepage/>},
-    {path:'/event',element:<Event/>},
-    {path:'/about',element:<About/>},
-  ],
-},
+/**
+ * Application entry point
+ * Sets up React Router and renders the app
+ */
 
+// Create router configuration with routes
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <App />,
+    children: [
+      // Home page route
+      { path: '/', element: <Homepage /> },
+      
+      // Events page route
+      { path: '/event', element: <Event /> },
+      
+      // About page route
+      { path: '/about', element: <About /> },
+    ],
+  },
 ])
 
-
+// Render the app with router provider in strict mode
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router}/>
-    
+    <RouterProvider router={router} />
   </StrictMode>,
 )

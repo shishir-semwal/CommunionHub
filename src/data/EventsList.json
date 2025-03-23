@@ -11,8 +11,8 @@
   {
     "id":2,
     "title":"Eid-ul-Fitr",
-    "desc":"Celebrate the end of the holy month of Ramadan with special prayers, community gatherings, and festive meals",
-    "location":"Mecca Masjid, Charminar Area, Ghansi Bazar, Hyderabad ",
+    "desc":"Celebrate the end of the holy month of Ramadan with special prayers.",
+    "location":" Hyderabad ",
     "category":"Religious",
     "date":"30 March",
     "image":"https://media.istockphoto.com/id/2018101881/photo/ramadan-kareem-photography-lantern-with-crescent-moon-shape-on-the-beach.webp?a=1&b=1&s=612x612&w=0&k=20&c=pA7cBujm4tdM0YkD16VbLW4o8ISjOWQj1zELCq-peRM="
@@ -20,8 +20,8 @@
   {
     "id":3,
     "title":"Mahavir Jayanti",
-    "desc":"A significant Jain festival celebrating the birth of Lord Mahavir. The day includes prayers, fasting, and processions, with devotees visiting temples to participate in rituals.",
-    "location":"Shri 8000 Shantinath Digambar Jain Mandir, Basant Vihar, Mahaveer Nagar Extension, Kota",
+    "desc":"A significant Jain festival celebrating the birth of Lord Mahavir.",
+    "location":" Kota",
     "category":"Religious",
     "date":"10 April",
     "image":"https://media.istockphoto.com/id/494243298/photo/jain-temple-mahavira-in-jaisalmer-india.webp?a=1&b=1&s=612x612&w=0&k=20&c=R9p4IRuLmP-Jtse-6h6XLUD5cYSOqZOegDNaxHbMEoc="
@@ -29,8 +29,8 @@
   {
     "id":4,
     "title":"Good Friday ",
-    "desc":"A solemn Christian service commemorating the crucifixion of Jesus Christ, featuring scripture readings, hymns, and reflections.",
-    "location":"Mumbai, Maharashtra",
+    "desc":"A solemn Christian service commemorating the crucifixion of Jesus Christ.",
+    "location":"Mumbai",
     "category":"Religious",
     "date":"18 April",
     "image":" https://images.unsplash.com/photo-1685736092003-0ec68f831fba?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTE5fHxjaHJ1Y2h8ZW58MHx8MHx8fDA%3D"
@@ -38,7 +38,7 @@
   {
     "id":5,
     "title":"Terry Fox Run",
-    "desc":"The Terry Fox Run is an annual non-competitive charity event held around the world to raise money for cancer research in commemoration of Canadian cancer activist Terry Fox and his Marathon of Hope",
+    "desc":"The Terry Fox Run is an annual non-competitive charity event held around the world to raise money.",
     "location":"Dehradun",
     "category":"Charity",
     "date":"18 April",
@@ -47,7 +47,7 @@
   {
     "id":6,
     "title":"Millionaire's Meet up",
-    "desc":"Millionaire's Meet up is networking event for HNWI to connect , collaborate & build an Millionaire network",
+    "desc":"Millionaire's Meet up is networking event for HNWI to connect , collaborate & build.",
     "location":"Bengaluru",
     "category":"Social",
     "date":"22 March",

@@ -1,0 +1,10 @@
+/**
+ * App-specific styles
+ * Contains custom styles for components that aren't covered by Tailwind classes
+ */
+
+/* Style for selected button state */
+.selected-btn {
+  background-color: var(--btn-primary-hover-bg, #00bbffce) !important;
+  color: var(--btn-primary-hover-text, rgb(0, 0, 0)) !important;
+}
