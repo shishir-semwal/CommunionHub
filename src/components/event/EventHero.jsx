@@ -1,56 +1,59 @@
 import React, { useState, useEffect } from "react";
 import EventsList from "../../data/EventsList.json";
 import AllEvents from "./AllEvents";
-import EventFilters from "./EventFilters";
+import Modal from "../shared/Modal.jsx";
 
-/**
- * Main component for displaying and filtering events
- * Handles event state, filtering, adding events, and persistence
- */
+// Helper function to parse different date formats
+const parseEventDate = (dateStr) => {
+  // Handle date strings like "17 March" or "30 March"
+  if (typeof dateStr === 'string' && dateStr.includes(' ')) {
+    const [day, month] = dateStr.split(' ');
+    const months = {
+      'January': 0, 'February': 1, 'March': 2, 'April': 3, 'May': 4, 'June': 5,
+      'July': 6, 'August': 7, 'September': 8, 'October': 9, 'November': 10, 'December': 11
+    };
+    
+    // Create a date object for the current year
+    const date = new Date();
+    date.setMonth(months[month] || 0);
+    date.setDate(parseInt(day) || 1);
+    return date;
+  }
+  
+  // Handle date-picker format (YYYY-MM-DD)
+  else if (typeof dateStr === 'string' && dateStr.includes('-')) {
+    return new Date(dateStr);
+  }
+  
+  // Default case
+  return new Date();
+};
+
+// Function to format a date string to "DD Month" format
+const formatDate = (dateString) => {
+  // For date picker format (YYYY-MM-DD)
+  if (dateString.includes('-')) {
+    const date = new Date(dateString);
+    const day = date.getDate();
+    const monthNames = ["January", "February", "March", "April", "May", "June",
+      "July", "August", "September", "October", "November", "December"];
+    const month = monthNames[date.getMonth()];
+    return `${day} ${month}`;
+  }
+  // Return as is if already in the right format
+  return dateString;
+};
+
 const EventHero = () => {
-  /**
-   * Helper function to parse different date formats
-   * 
-   * @param {string} dateStr - Date string in various formats
-   * @returns {Date} - JavaScript Date object
-   */
-  const parseEventDate = (dateStr) => {
-    // Handle date strings like "17 March" or "30 March"
-    if (typeof dateStr === 'string' && dateStr.includes(' ')) {
-      const [day, month] = dateStr.split(' ');
-      const months = {
-        'January': 0, 'February': 1, 'March': 2, 'April': 3, 'May': 4, 'June': 5,
-        'July': 6, 'August': 7, 'September': 8, 'October': 9, 'November': 10, 'December': 11
-      };
-      
-      // Create a date object for the current year
-      const date = new Date();
-      date.setMonth(months[month] || 0);
-      date.setDate(parseInt(day) || 1);
-      return date;
-    }
-    
-    // Handle date-picker format (YYYY-MM-DD)
-    else if (typeof dateStr === 'string' && dateStr.includes('-')) {
-      return new Date(dateStr);
-    }
-    
-    // Default case
-    return new Date();
-  };
-
   // Load events from localStorage if available, otherwise use EventsList
   const [events, setEvents] = useState(() => {
     const savedEvents = localStorage.getItem("events");
     return savedEvents ? JSON.parse(savedEvents) : EventsList;
   });
 
-  // Filter state
   const [religious, setReligious] = useState(false);
   const [charity, setCharity] = useState(false);
   const [social, setSocial] = useState(false);
-  
-  // Filtered data state
   const [filterData, setFilterData] = useState(() => {
     // Sort events by date when initializing
     const sortedEvents = [...events].sort((a, b) => {
@@ -59,12 +62,7 @@ const EventHero = () => {
     return sortedEvents;
   });
 
-  /**
-   * Filter events by category
-   * 
-   * @param {string} category - Category to filter by
-   * @returns {Array} - Filtered and sorted events
-   */
+  // Filter based on current events state instead of EventsList
   const getFilteredEvents = (category) => {
     return events
       .filter((data) => data.category === category)
@@ -76,11 +74,6 @@ const EventHero = () => {
     localStorage.setItem("events", JSON.stringify(events));
   }, [events]);
 
-  /**
-   * Add a new event to the list
-   * 
-   * @param {Object} newEvent - New event details
-   */
   const addEvent = (newEvent) => {
     const eventDetail = {
       id: Date.now(), // Use timestamp for unique ID
@@ -88,7 +81,7 @@ const EventHero = () => {
       desc: newEvent.evtDesc,
       location: newEvent.evtLocation,
       category: newEvent.evtCateg,
-      date: newEvent.evtDate,
+      date: formatDate(newEvent.evtDate), // Format the date here
       image:
         "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bmV3JTIwZmluZGluZ3xlbnwwfHwwfHx8MA%3D%3D",
     };
@@ -117,9 +110,6 @@ const EventHero = () => {
     }
   };
 
-  /**
-   * Reset events to default from EventsList
-   */
   const resetEvents = () => {
     localStorage.removeItem("events");
     // Sort the default events when resetting
@@ -133,11 +123,6 @@ const EventHero = () => {
     setSocial(false);
   };
 
-  /**
-   * Handle category filter button clicks
-   * 
-   * @param {string} category - Selected category
-   */
   const handleClick = (category) => {
     if (category === "all") {
       setReligious(false);
@@ -168,22 +153,117 @@ const EventHero = () => {
 
   return (
     <div className="pt-32">
-      {/* Page header */}
       <center className="text-4xl pb-10">
-        <h1 className="text-2xl md:text-4xl">Where Communities Thrive • Discover Events</h1>
+       <h1 className="text-2xl md:text-4xl">Where Communities Thrive • Discover Events</h1>
       </center>
       
-      {/* Event filters and controls */}
-      <EventFilters 
-        religious={religious}
-        charity={charity}
-        social={social}
-        handleClick={handleClick}
-        onAddEvent={addEvent}
-        resetEvents={resetEvents}
-      />
+      {/* Desktop view - unchanged from original */}
+      <div className="hidden md:block">
+        <center>
+          <div className="mb-8">
+            <p className="inline text-lg pr-8">Category: </p>
+            <button
+              onClick={() => handleClick('all')}
+              className={`btn btn-soft ${
+                !religious && !charity && !social ? "btn-primary selected-btn" : "btn-info"
+              } mr-8`}
+            >
+              All
+            </button>
 
-      {/* Event list or empty state message */}
+            <button
+              onClick={() => handleClick('religious')}
+              className={`btn btn-soft ${
+                religious ? "btn-primary selected-btn" : "btn-info"
+              }`}
+            >
+              Religious
+            </button>
+
+            <button
+              onClick={() => handleClick('social')}
+              className={`btn btn-soft ml-8 mr-8 ${
+                social ? "btn-primary selected-btn" : "btn-info"
+              }`}
+            >
+              Social
+            </button>
+
+            <button
+              onClick={() => handleClick('charity')}
+              className={`btn btn-soft mr-8 ${
+                charity ? "btn-primary selected-btn" : "btn-info"
+              }`}
+            >
+              Charity
+            </button>
+            <p className="inline text-lg pr-8 pl-64">Add new event: </p>
+            <span className="btn btn-info">
+              <Modal onAddEvent={addEvent} />
+            </span>
+            <button onClick={resetEvents} className="btn btn-error ml-4">
+              Reset
+            </button>
+          </div>
+        </center>
+      </div>
+      
+      {/* Mobile view - centered controls */}
+      <div className="block md:hidden px-4">
+        <div className="text-center mb-6">
+          <p className="text-lg mb-3">Category: </p>
+          <div className="flex flex-wrap justify-center gap-2">
+            <button
+              onClick={() => handleClick('all')}
+              className={`btn btn-soft ${
+                !religious && !charity && !social ? "btn-primary selected-btn" : "btn-info"
+              }`}
+            >
+              All
+            </button>
+
+            <button
+              onClick={() => handleClick('religious')}
+              className={`btn btn-soft ${
+                religious ? "btn-primary selected-btn" : "btn-info"
+              }`}
+            >
+              Religious
+            </button>
+
+            <button
+              onClick={() => handleClick('social')}
+              className={`btn btn-soft ${
+                social ? "btn-primary selected-btn" : "btn-info"
+              }`}
+            >
+              Social
+            </button>
+
+            <button
+              onClick={() => handleClick('charity')}
+              className={`btn btn-soft ${
+                charity ? "btn-primary selected-btn" : "btn-info"
+              }`}
+            >
+              Charity
+            </button>
+          </div>
+        </div>
+        
+        <div className="text-center mb-6">
+          <p className="text-lg mb-3">Add new event: </p>
+          <div className="flex justify-center gap-3">
+            <span className="btn btn-info">
+              <Modal onAddEvent={addEvent} />
+            </span>
+            <button onClick={resetEvents} className="btn btn-error">
+              Reset
+            </button>
+          </div>
+        </div>
+      </div>
+
       {filterData.length === 0 ? (
         <div className="text-center py-16">
           <h3 className="text-2xl font-semibold mb-4">
